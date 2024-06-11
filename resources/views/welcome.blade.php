@@ -74,6 +74,5 @@
         </div>
     </div>
 
-    <button class="pesan-button">Pesan</button>
 </body>
 </html>
