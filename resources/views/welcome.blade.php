@@ -16,6 +16,7 @@
             align-items: center;
             justify-content: space-between;
             height: 100vh;
+            position: relative;
         }
         .table-container {
             width: 90%;
@@ -160,6 +161,22 @@
         .bottom-buttons button:hover {
             opacity: 0.8;
         }
+        .pesan-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pesan-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -229,5 +246,7 @@
             <button class="green">9</button>
         </div>
     </div>
+
+    <button class="pesan-button">Pesan</button>
 </body>
 </html>
