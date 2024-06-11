@@ -62,17 +62,36 @@
             </div>
         </div>
         <div class="bottom-control bottom-buttons">
-            <button class="red">1</button>
-            <button class="red">2</button>
-            <button class="red">3</button>
-            <button class="red">4</button>
-            <button class="red">5</button>
-            <button class="red">6</button>
-            <button class="red">7</button>
-            <button class="red">8</button>
-            <button class="red">9</button>
-        </div>
-    </div>
+    <button class="red" data-url="{{ route('payment.page') }}">1</button>
+    <button class="red" data-url="{{ route('payment.page') }}">2</button>
+    <button class="red" data-url="{{ route('payment.page') }}">3</button>
+    <button class="red" data-url="{{ route('payment.page') }}">4</button>
+    <button class="red" data-url="{{ route('payment.page') }}">5</button>
+    <button class="red" data-url="{{ route('payment.page') }}">6</button>
+    <button class="red" data-url="{{ route('payment.page') }}">7</button>
+    <button class="red" data-url="{{ route('payment.page') }}">8</button>
+    <button class="red" data-url="{{ route('payment.page') }}">9</button>
+</div>
+
+<script>
+document.querySelectorAll('.bottom-control .red').forEach(button => {
+    button.addEventListener('click', () => {
+        const url = button.getAttribute('data-url');
+        window.location.href = url;
+    });
+});
+</script>
+
+
+
+<script>
+document.querySelectorAll('.bottom-control .red').forEach(button => {
+    button.addEventListener('click', () => {
+        const url = button.getAttribute('data-url');
+        window.location.href = url;
+    });
+});
+</script>
 
 </body>
 </html>
