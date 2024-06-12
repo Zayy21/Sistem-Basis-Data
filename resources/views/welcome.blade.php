@@ -126,7 +126,7 @@
             </div>
             <div class="row align-items-end">
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">Pesan</button></a>
+                <a href="payment"><button class="button-lanjut">Lanjut</button></a>
           </div>
         </div>
       </div>
