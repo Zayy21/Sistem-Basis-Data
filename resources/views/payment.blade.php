@@ -14,17 +14,18 @@
 <div class="header">
     <h1>Pembayaran</h1>
 </div>
-<div class="payment-table">
-        <p>Table Number: <span id="tableNumber"></span></p>
-        </div>
 
-<div class="wrapper">
+
+<div class="wrapper pt-5">
+    <div class="payment-table">
+        <p>Table Number: <span id="tableNumber"></span></p>
+    </div>
     <form id="paymentForm" action="{{ route('payments.store') }}" method="POST">
         @csrf
         <input type="hidden" name="meja" id="mejaInput">
         <div class="row">
             <div class="col-auto label-name">
-                <label class="col-form-label">NAMA</label>
+                <label class="col-form-label fw-bold">NAMA</label>
             </div>
             <div class="col-auto input-name">
                 <input type="text" name="name" id="nama" class="">
@@ -32,33 +33,29 @@
         </div>
         <div class="container payment payment-stick-gloves mt-4">
             <div class="row align-items-start">
-                <div class="col">STICK BILLIARD</div>
+                <div class="col payment-name">STICK BILLIARD</div>
                 <div class="col d-flex text-center">
                     <input type="number" id="stick_billiard" name="stick_billiard" value="1" min="1" class="form-control">
                 </div>
-                <div class="col text-center fw-bold">-</div>
             </div>
         </div>
         <div class="container payment payment-stick-gloves">
             <div class="row align-items-start">
-                <div class="col">SARUNG TANGAN</div>
+                <div class="col payment-name">SARUNG TANGAN</div>
                 <div class="col d-flex text-center">
                     <input type="number" id="sarung_tangan" name="sarung_tangan" value="0" min="0" class="form-control">
                 </div>
-                <div class="col text-center fw-bold">20.000</div>
             </div>
         </div>
         <div class="container payment">
             <div class="row align-items-start">
-                <div class="col">JAM</div>
-                <div class="col d-flex text-center">
+                <div class="col payment-name">JAM</div>
+                <div class="col-4 d-flex text-center jam">
                     <input type="number" id="jam" name="jam" value="1" min="1" class="form-control">
                 </div>
-                <div class="col text-center fw-bold">35.000</div>
-            </div>
-        </div>
-        <div class="sum mt-3 fw-bold">
+                <div class="col-2 sum fw-bold">
             Rp. <span id="total_price">110.000</span>,-
+        </div>
         </div>
         <div class="container choose-payment">
             <div class="row">
@@ -68,11 +65,11 @@
                 <div class="col">
                     <button type="button" class="cash choose">CASH</button>
                 </div>
-                <div class="col>
+                <div class="col">
                     <button type="button" class="debit choose">DEBIT</button>
                 </div>
                 <div class="col p-0">
-                    <button type="submit" class="bayar">BAYAR</button>
+                    <button type="submit" class="bayar fw-bold">BAYAR</button>
                 </div>
             </div>
         </div>

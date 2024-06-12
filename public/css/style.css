@@ -7,8 +7,7 @@ body {
     background-color: #230D56;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    font-size: 10px;
-    height: 30px;
+    height: 50px;
     padding-right: 25px;
     margin-left: 20px;
 
@@ -19,14 +18,16 @@ body {
 }
 .text-head {
     background-color: #F6EE1D;
-    margin-top: 7px;
+    font-size: 12px;
+    height: 20px;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
 }
 .body-table {
     background-color: #FFFFFF;
-    height: 650px;
+    height: 610px;
     width: 76%;
     overflow-y: scroll;
     margin-left: 20px;
@@ -42,17 +43,19 @@ body {
     height: 70px;
     width: 100%;
     background-color: #230D56;
-    padding-top: 18px;
+    padding-top: 15px;
     margin-top: 8px;
 }
 .text-body p{
     color: white;
+    font-size: 20px;
+
 }
 
 /* Table booking meja */
 .booking {
     background-color: #230D56;
-    height: 680px;
+    height: 665px;
     width: 20%;
     border-radius: 10px;
     position: absolute; /* Mengatur posisi absolut */
@@ -133,12 +136,19 @@ img {
     margin-top: 40px;
     border-radius: 20px;
 }
+.payment-table {
+    margin-left: 120px;
+}
+.payment-table p {
+    font-size: 20px;
+    font-weight: bold;
+}
 .label-name {
     background-color: #F6EE1D;
     height: auto;
     width: 80px;
     padding: 0%;
-    margin-top: 70px;
+    margin-top: 15px;
     margin-left: 120px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -147,7 +157,7 @@ img {
     margin-left: 17px;
 }
 .input-name{
-    margin-top: 70px;
+    margin-top: 15px;
     background-color: #230D56;
     padding: 0%;
     width: 400px;
@@ -166,7 +176,14 @@ img {
 }
 .payment {
     width: 80%;
-    margin-top: 20px;
+    margin-top: 10px;
+    height: 50px;
+}
+.payment-name {
+    margin-top: 8px;
+}
+.payment input {
+    border: none;
 }
 .idecrement-payment span {
     width: 100%;
@@ -200,16 +217,14 @@ img {
 }
 .sum {
     background-color: #F6EE1D;
-    width: 120px;
+    /* width: 100px; */
     height: 30px;
     text-align: center;
     padding-top: 3px;
     border-radius: 8px;
-    position: absolute;
-    right: 26%;
 }
 .choose-payment {
-    margin-top: 80px;
+    margin-top: 140px;
     width: 600px;
     height: 45px;
     background-color: #230D56;
