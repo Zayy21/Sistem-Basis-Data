@@ -59,7 +59,7 @@
     </div>
 <!-- body table end -->
 <!-- sum stick start -->
-    <div class="container con-booking mt-4">
+    {{-- <div class="container con-booking mt-4">
       <div class="row">
         <div class="col booking p-0 position-relative">
           <div class="position-absolute top-0 start-50 translate-middle-x">
@@ -72,10 +72,10 @@
               <button class="plus">+</button>
             </div>
           </div>
-        </div>
+        </div> --}}
 <!-- sum stick end -->
 <!-- sum gloves start -->
-        <div class="col booking p-0 position-relative">
+        {{-- <div class="col booking p-0 position-relative">
           <div class="position-absolute top-0 start-50 translate-middle-x">
             <img src="" alt="GLOVES" class="m-0">
           </div>
@@ -86,44 +86,47 @@
               <button class="plus">+</button>
             </div>
           </div>
-        </div>
+        </div> --}}
 <!-- sum gloves end -->
 <!-- pick table start -->
         <div class="col booking p-0">
           <div class="container booking-meja">
             <div class="row align-items-start">
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">1</button></a>
+                <button class='meja'>1</button>
               </div>
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">2</button></a>
+                <button class='meja'>2</button>
               </div>
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">3</button></a>
+                <button class='meja'>3</button>
               </div>
             </div>
             <div class="row align-items-center">
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">4</button></a>
+                <button class='meja'>4</button>
               </div>
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">5</button></a>
+                <button class='meja'>5</button>
               </div>
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">6</button></a>
+                <button class='meja'>6</button>
               </div>
             </div>
             <div class="row align-items-end">
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">7</button></a>
+                <button class='meja'>7</button>
               </div>
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">8</button></a>
+                <button class='meja'>8</button>
               </div>
               <div class="col p-0 my-2 mx-1">
-                <a href="payment"><button class="meja">9</button></a>
+                <button class='meja'>9</button>
               </div>
             </div>
+            <div class="row align-items-end">
+              <div class="col p-0 my-2 mx-1">
+                <a href="payment"><button class="meja">Pesan</button></a>
           </div>
         </div>
       </div>
