@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <title>Mod Billiard</title>
     <style>
-        .meja {
+        /* .meja {
             width: 100%;
             padding: 10px;
             text-align: center;
@@ -19,7 +19,7 @@
         .meja.green {
             background-color: green;
             color: white;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -28,7 +28,8 @@
         <div class="row text-center fw-bold">
             <div class="col-2"><div class="text-head">NOMOR MEJA</div></div>
             <div class="col-5"><div class="text-head">NAMA PENYEWA</div></div>
-            <div class="col-2"><div class="text-head">STICK</div></div>
+            <div class="col-1"><div class="text-head">STICK</div></div>
+            <div class="col-1"><div class="text-head">GLOVES</div></div>
             <div class="col-3"><div class="text-head">SISA WAKTU</div></div>
         </div>
     </div>
@@ -49,9 +50,14 @@
                             <p>{{ $payment->nama }}</p>
                         </div>
                     </div>
-                    <div class="col-2 p-0">
+                    <div class="col-1 p-0">
                         <div class="text-body">
                             <p>{{ $payment->stick }}</p>
+                        </div>
+                    </div>
+                    <div class="col-1 p-0">
+                        <div class="text-body">
+                            <p>{{ $payment->gloves }}</p>
                         </div>
                     </div>
                     <div class="col-3 p-0">
@@ -63,7 +69,7 @@
             @endforeach
         @else
             <div class="row text-center">
-                <div class="col-12 p-0">
+                <div class="col npw payment p-0">
                     <div class="text-body"><p>No payments found.</p></div>
                 </div>
             </div>

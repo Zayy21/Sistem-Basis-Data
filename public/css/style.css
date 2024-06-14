@@ -62,9 +62,18 @@ body {
     top: 20px; /* Menentukan jarak dari atas */
     right: 20px; /* Menentukan jarak dari kanan */
 }
-img {
-    height: 190px;
-    margin-left: 100px;
+.meja {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+.meja.red {
+    background-color: red;
+    color: white;
+}
+.meja.green {
+    background-color: #04DE34;
+    color: white;
 }
 
 .idecrement span {
