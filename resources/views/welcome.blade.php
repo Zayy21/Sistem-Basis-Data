@@ -1,6 +1,3 @@
-{{-- welcome.balde.php --}}
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,13 +24,20 @@
 <!-- header table end -->
 <!-- body table start -->
     <div class="container body-table py-2">
-        <div class="row text-center">
-            <!-- Sample rows -->
-            <div class="col-2 p-0"><div class="text-body" style="border-left-style: solid; border-top-left-radius: 10px; border-bottom-left-radius: 10px;"><p>2</p></div></div>
-            <div class="col-5 p-0"><div class="text-body"><p>REVAN HAIKAL</p></div></div>
-            <div class="col-2 p-0"><div class="text-body"><p>3</p></div></div>
-            <div class="col-3 p-0"><div class="text-body" style="border-right-style: solid; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"><p>00:37:00</p></div></div>
-        </div>
+        @if(isset($payments) && count($payments) > 0)
+            @foreach($payments as $payment)
+                <div class="row text-center">
+                    <div class="col-2 p-0"><div class="text-body" style="border-left-style: solid; border-top-left-radius: 10px; border-bottom-left-radius: 10px;"><p>{{ $payment->meja }}</p></div></div>
+                    <div class="col-5 p-0"><div class="text-body" id="nama"><p>{{ $payment->nama }}</p></div></div>
+                    <div class="col-2 p-0"><div class="text-body"><p>{{ $payment->stick }}</p></div></div>
+                    <div class="col-3 p-0"><div class="text-body" style="border-right-style: solid; border-top-right-radius: 10px; border-bottom-right-radius: 10px;"><p>{{ gmdate("H:i:s", $payment->jam * 3600) }}</p></div></div>
+                </div>
+            @endforeach
+        @else
+            <div class="row text-center">
+                <div class="col-12 p-0"><div class="text-body"><p>No payments found.</p></div></div>
+            </div>
+        @endif
     </div>
 <!-- body table end -->
 <!-- sum stick start -->
@@ -86,7 +90,6 @@
 <!-- pick table end -->
     <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -98,11 +101,10 @@
         const selectedButton = document.querySelector(`.meja[data-table="${tableNumber}"]`);
         selectedButton.classList.add('pressed');
     }
-    
 </script>
 
 
-
+    
 
 </body>
 </html>

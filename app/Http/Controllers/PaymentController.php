@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
@@ -26,4 +27,9 @@ class PaymentController extends Controller
     
             return redirect()->route('welcome.page')->with('success', 'Payment successful!');
         }
-}
+        public function index()
+        {
+            $payments = Payment::all();
+            return view('welcome', compact('payments'));
+        }
+    }
