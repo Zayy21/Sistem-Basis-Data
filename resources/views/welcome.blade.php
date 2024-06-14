@@ -38,7 +38,6 @@
     <div class="container body-table py-2">
         @if(isset($payments) && count($payments) > 0)
             @foreach($payments as $payment)
-                <!-- Ubah data-hours menjadi data-seconds untuk pengujian cepat -->
                 <div class="row text-center payment-row" id="payment-row-{{ $payment->id }}">
                     <div class="col-2 p-0">
                         <div class="text-body" style="border-left-style: solid; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
@@ -61,7 +60,7 @@
                         </div>
                     </div>
                     <div class="col-3 p-0">
-                        <div class="text-body countdown-timer" data-seconds="{{ $payment->jam * 60 }}" data-id="{{ $payment->id }}" data-meja="{{ $payment->meja }}" style="border-right-style: solid; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                        <div class="text-body countdown-timer" data-hours="{{ $payment->jam }}" data-id="{{ $payment->id }}" data-meja="{{ $payment->meja }}" style="border-right-style: solid; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
                             <p class="time-remaining" id="time-remaining-{{ $payment->id }}"></p>
                         </div>
                     </div>
@@ -143,7 +142,7 @@
         const countdownElements = document.querySelectorAll('.countdown-timer');
 
         countdownElements.forEach(function(element) {
-            const seconds = element.getAttribute('data-seconds');
+            const hours = element.getAttribute('data-hours');
             const timerId = element.querySelector('.time-remaining').id;
             const mejaId = element.getAttribute('data-meja');
             const localStorageKey = `countdown-${timerId}`;
@@ -151,7 +150,7 @@
             let deadline = localStorage.getItem(localStorageKey);
 
             if (!deadline) {
-                deadline = new Date(new Date().getTime() + seconds * 1000);
+                deadline = new Date(new Date().getTime() + hours * 3600 * 1000);
                 localStorage.setItem(localStorageKey, deadline);
             } else {
                 deadline = new Date(deadline);
