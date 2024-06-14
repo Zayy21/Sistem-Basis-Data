@@ -6,6 +6,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <title>Mod Billiard</title>
+    <style>
+        .meja {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        .meja.red {
+            background-color: red;
+            color: white;
+        }
+        .meja.green {
+            background-color: green;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <!-- header table start -->
@@ -22,6 +37,7 @@
     <div class="container body-table py-2">
         @if(isset($payments) && count($payments) > 0)
             @foreach($payments as $payment)
+                <!-- Ubah data-hours menjadi data-seconds untuk pengujian cepat -->
                 <div class="row text-center payment-row" id="payment-row-{{ $payment->id }}">
                     <div class="col-2 p-0">
                         <div class="text-body" style="border-left-style: solid; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
@@ -39,7 +55,7 @@
                         </div>
                     </div>
                     <div class="col-3 p-0">
-                        <div class="text-body countdown-timer" data-hours="{{ $payment->jam }}" style="border-right-style: solid; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                        <div class="text-body countdown-timer" data-seconds="{{ $payment->jam * 60 }}" data-id="{{ $payment->id }}" data-meja="{{ $payment->meja }}" style="border-right-style: solid; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
                             <p class="time-remaining" id="time-remaining-{{ $payment->id }}"></p>
                         </div>
                     </div>
@@ -63,35 +79,35 @@
         <div class="container booking-meja">
             <div class="row align-items-start">
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(1)" data-table="1">1</button>
+                    <button class='meja' id="meja-1" onclick="selectTable(1)" data-table="1">1</button>
                 </div>
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(2)" data-table="2">2</button>
+                    <button class='meja' id="meja-2" onclick="selectTable(2)" data-table="2">2</button>
                 </div>
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(3)" data-table="3">3</button>
+                    <button class='meja' id="meja-3" onclick="selectTable(3)" data-table="3">3</button>
                 </div>
             </div>
             <div class="row align-items-center">
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(4)" data-table="4">4</button>
+                    <button class='meja' id="meja-4" onclick="selectTable(4)" data-table="4">4</button>
                 </div>
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(5)" data-table="5">5</button>
+                    <button class='meja' id="meja-5" onclick="selectTable(5)" data-table="5">5</button>
                 </div>
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(6)" data-table="6">6</button>
+                    <button class='meja' id="meja-6" onclick="selectTable(6)" data-table="6">6</button>
                 </div>
             </div>
             <div class="row align-items-end">
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(7)" data-table="7">7</button>
+                    <button class='meja' id="meja-7" onclick="selectTable(7)" data-table="7">7</button>
                 </div>
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(8)" data-table="8">8</button>
+                    <button class='meja' id="meja-8" onclick="selectTable(8)" data-table="8">8</button>
                 </div>
                 <div class="col p-0 my-2 mx-1">
-                    <button class='meja' onclick="selectTable(9)" data-table="9">9</button>
+                    <button class='meja' id="meja-9" onclick="selectTable(9)" data-table="9">9</button>
                 </div>
             </div>
             <div class="row align-items-end">
@@ -117,18 +133,22 @@
         const countdownElements = document.querySelectorAll('.countdown-timer');
 
         countdownElements.forEach(function(element) {
-            const hours = element.getAttribute('data-hours');
+            const seconds = element.getAttribute('data-seconds');
             const timerId = element.querySelector('.time-remaining').id;
+            const mejaId = element.getAttribute('data-meja');
             const localStorageKey = `countdown-${timerId}`;
 
             let deadline = localStorage.getItem(localStorageKey);
 
             if (!deadline) {
-                deadline = new Date(new Date().getTime() + hours * 3600 * 1000);
+                deadline = new Date(new Date().getTime() + seconds * 1000);
                 localStorage.setItem(localStorageKey, deadline);
             } else {
                 deadline = new Date(deadline);
             }
+
+            // Set the table color to red
+            document.getElementById(`meja-${mejaId}`).classList.add('red');
 
             const interval = setInterval(function() {
                 const now = new Date().getTime();
@@ -143,6 +163,9 @@
                     clearInterval(interval);
                     document.getElementById(timerId).innerHTML = "00:00:00";
                     document.getElementById(`payment-row-${element.dataset.id}`).remove();
+                    // Set the table color to green when time is up
+                    document.getElementById(`meja-${mejaId}`).classList.remove('red');
+                    document.getElementById(`meja-${mejaId}`).classList.add('green');
                 }
             }, 1000);
         });
