@@ -112,7 +112,7 @@
             </div>
             <div class="row align-items-end">
                 <div class="col p-0 my-2 mx-1">
-                    <a href="payment" id="lanjutButton"><button class="button-lanjut">Lanjut</button></a>
+                    <a href="#" id="lanjutButton"><button class="button-lanjut">Lanjut</button></a>
                 </div>
             </div>
         </div>
@@ -122,11 +122,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function selectTable(tableNumber) {
+        const tableButton = document.getElementById(`meja-${tableNumber}`);
+        if (tableButton.classList.contains('red')) {
+            alert('Meja sudah terisi');
+            return;
+        }
         sessionStorage.setItem('selectedTable', tableNumber);
         const lanjutButton = document.getElementById('lanjutButton');
         lanjutButton.href = `payment?table=${tableNumber}`;
-        const selectedButton = document.querySelector(`.meja[data-table="${tableNumber}"]`);
-        selectedButton.classList.add('pressed');
+        tableButton.classList.add('pressed');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -164,10 +168,22 @@
                     document.getElementById(timerId).innerHTML = "00:00:00";
                     document.getElementById(`payment-row-${element.dataset.id}`).remove();
                     // Set the table color to green when time is up
-                    document.getElementById(`meja-${mejaId}`).classList.remove('red');
-                    document.getElementById(`meja-${mejaId}`).classList.add('green');
+                    const tableButton = document.getElementById(`meja-${mejaId}`);
+                    tableButton.classList.remove('red');
+                    tableButton.classList.add('green');
+                    // Clear the localStorage item when time is up
+                    localStorage.removeItem(localStorageKey);
                 }
             }, 1000);
+        });
+
+        const lanjutButton = document.getElementById('lanjutButton');
+        lanjutButton.addEventListener('click', function(event) {
+            const selectedTable = sessionStorage.getItem('selectedTable');
+            if (!selectedTable) {
+                event.preventDefault();
+                alert('Pilih meja terlebih dahulu');
+            }
         });
     });
 </script>
